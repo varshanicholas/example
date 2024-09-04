@@ -1,0 +1,102 @@
+
+#SEARCHING AND SORTING ALGORITHMS:
+
+#Question--1
+# 	Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. 
+# If target exists, then return its index. Otherwise, return -1. You must write an algorithm with O(log n) runtime complexity.
+
+"""
+def binary_search(nums: list[int], target: int) -> int:
+    left, right = 0, len(nums) - 1
+    
+    while left <= right:
+        mid = (left + right) // 2
+        
+        if nums[mid] == target:
+            return mid
+        elif nums[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    
+    return -1
+def get_user_input():
+    nums = list(map(int, input("Enter the sorted array (space-separated): ").split()))
+    target = int(input("Enter the target value: "))
+    result = binary_search(nums, target)
+    if result != -1:
+        print(f"Target found at index: {result}")
+    else:
+        print("Target not found in the array.")
+
+get_user_input()"""
+
+#---------------------------------------
+
+
+
+#Recursion
+
+#Question--1
+
+
+#Given n pairs of parentheses, write a function to generate all combinations 
+# of well-formed parenthese
+"""
+def generateParenthesis(n: int) -> list[str]:
+    def backtrack(current: str, open_count: int, close_count: int):
+        if len(current) == 2 * n:
+            result.append(current)
+            return
+        
+        if open_count < n:
+            backtrack(current + '(', open_count + 1, close_count)
+        
+        if close_count < open_count:
+            backtrack(current + ')', open_count, close_count + 1)
+    
+    result = []
+    backtrack('', 0, 0)
+    return result
+
+def main():
+
+    n = int(input("Enter the number of pairs of parentheses: "))
+    combinations = generateParenthesis(n)
+    print("All combinations of well-formed parentheses:")
+    for combo in combinations:
+        print(combo)
+if __name__ == "__main__":
+    main()
+
+"""
+
+#question-2
+
+#	Given an integer array nums of unique elements, return all possible Subsets (the power set).
+# The solution set must not contain duplicate subsets. Return the solution inany order
+"""
+def subsets(nums: list[int]) -> list[list[int]]:
+    def backtrack(start: int, path: list[int]):
+
+        result.append(path[:])
+        
+        for i in range(start, len(nums)):
+            path.append(nums[i])
+            backtrack(i + 1, path)
+            path.pop()
+    
+    result = []
+    backtrack(0, [])
+    return result
+
+def main():
+    nums = list(map(int, input("Enter the unique elements of the array (space-separated): ").split()))
+    
+    subsets_list = subsets(nums)
+    print("All possible subsets:")
+    for subset in subsets_list:
+        print(subset)
+if __name__ == "__main__":
+    main()
+"""
